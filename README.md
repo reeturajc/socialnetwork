@@ -1,6 +1,28 @@
-# Getting Started with Create React App
+# Social Network App - By Reeturaj [Assignment]
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Node Module Used
+
+- Reactstrap - For UI Management
+- Redux - For Central State Management
+- Redux Thunk - For Asycn Action Dispatches
+- Moment - For DateTime conversion
+- Typescript - For Linting
+- Axios - For making network calls
+- FortAwesome - For using FontAwesome Icons
+- React Router Dom - For internal app routing
+
+## Developer's Feedback About App
+
+- The app is made as per the requirements given
+- Default user id is 1 in the current app
+- 429 Too Many Request may occur while calling comments api to calculate comment count
+- The comments count was not available in the post data so multiple api calls needed to done to get comments of the respective posts
+- To prevent Error:429, comments count in Post List page is fetched only when the card component is in viewport and that too once per app session.
+- Updated comment count can be viewed in app details page.
+- Due to Error:429, count data may sometimes be inaccurate
+- The API can be modified to give comment count in the post data object itself to prevent Error:429
 
 ## Available Scripts
 
