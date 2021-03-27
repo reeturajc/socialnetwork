@@ -22,6 +22,7 @@ interface Props {
   onCreate: any;
   onUpdate: any;
   onDelete: any;
+  history:any;
 }
 
 interface State {
@@ -61,11 +62,9 @@ class PostListPage extends Component<Props, State> {
   postDeleteHandler = async () => {
     await this.props.onDelete(this.state.selectedPost);
     this.setState({ deleteConfirm: false });
-    console.log(this.state.selectedPost);
   };
 
   postFormSubmitHandler = async (post: Post) => {
-    console.log("POST FORM LOG", post);
     this.setState({
       selectedPost: null,
       postFormFlag: 0,
@@ -93,6 +92,10 @@ class PostListPage extends Component<Props, State> {
     });
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
+
+  gotoPostDetails = (postId:string) => {
+    this.props.history.push(`/post-details/${postId}`);
+  }
 
   render() {
     const { selectedPost, postFormFlag, deleteConfirm } = this.state;
@@ -136,6 +139,7 @@ class PostListPage extends Component<Props, State> {
             posts={posts}
             onEdit={(post: Post) => this.postEditHandler(post)}
             onDelete={this.postDeleteConfirm}
+            onDetails={(postId:string)=>this.gotoPostDetails(postId)}
           />
         </Container>
         {posts.length === 0 && (

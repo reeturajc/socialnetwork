@@ -16,6 +16,19 @@ export class PostApiRepository {
       }
     };
   }
+  static fetchPost(postId:string) {
+    return async (dispatch: any) => {
+      try {
+        const post = await PostApi.fetchPost(postId);
+        if(post && typeof post !== "undefined"){
+          return Promise.resolve(post);
+        }
+        return Promise.resolve();
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    };
+  }
   static createPost(postData:Post) {
     return async (dispatch:any) => {
       try {

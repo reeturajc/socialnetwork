@@ -58,9 +58,9 @@ export class Http {
             const errorMessage = message
                 ? message
                 : 'Something Went Wrong. Please Try Again';
-            alert(errorMessage);
+            console.log(errorMessage);
         } else {
-            alert('Something Went Wrong.Please Try Again');
+            console.log('Something Went Wrong.Please Try Again');
         }
     }
 }

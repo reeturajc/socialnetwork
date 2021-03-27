@@ -87,7 +87,8 @@ function PostFormCard({ post,onSubmit,onCancel }: Props) {
           </FormGroup>
         </Form>
       </CardBody>
-      <CardFooter>
+      {userId === "1" || userId === "" ? (
+        <CardFooter>
         <span className="float-right h6 link" onClick={cancel}>
           Cancel
         </span>
@@ -101,6 +102,8 @@ function PostFormCard({ post,onSubmit,onCancel }: Props) {
           </span>
         )}
       </CardFooter>
+      ): null}
+      
     </Card>
   );
 }
