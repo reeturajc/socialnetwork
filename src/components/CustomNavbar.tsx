@@ -1,3 +1,8 @@
+/*
+  Author Name  : Reeturaj Chatterjee
+  Author Email : chatterjeereeturaj@gmail.com
+*/
+
 import React, { useState, useEffect } from "react";
 import { Button, Nav, Navbar, NavbarBrand } from "reactstrap";
 import { getEnvVariable } from "../environment";

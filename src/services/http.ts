@@ -1,3 +1,8 @@
+/*
+  Author Name  : Reeturaj Chatterjee
+  Author Email : chatterjeereeturaj@gmail.com
+*/
+
 import _axios, {AxiosRequestConfig} from 'axios';
 import {getEnvVariable} from '../environment';
 export class Http {
@@ -54,11 +59,12 @@ export class Http {
     }
     private static handleErrors(error:any) {
         if (error.response) {
-            const message = error.response.data.message;
+            const {data,status,statusText} = error.response;
+            const message = error.response.data;
             const errorMessage = message
                 ? message
                 : 'Something Went Wrong. Please Try Again';
-            console.log(errorMessage);
+            console.log({data,status,statusText});
         } else {
             console.log('Something Went Wrong.Please Try Again');
         }

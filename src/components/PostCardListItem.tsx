@@ -1,3 +1,8 @@
+/*
+  Author Name  : Reeturaj Chatterjee
+  Author Email : chatterjeereeturaj@gmail.com
+*/
+
 import React, { useEffect, useRef, useState } from "react";
 import {
   Card,
@@ -44,7 +49,7 @@ function PostCardListItem({
   }
 
   // Fetch comments count only if the component is rendered for detailView
-  // To prevent 422:Too Many Request Error from Server
+  // To prevent 429:Too Many Request Error from Server
   useEffect(() => {
     if(detailView){
       getCommentsCount();
@@ -59,7 +64,7 @@ function PostCardListItem({
   }, [isVisible]);
 
   // Call comments API only for the first time when component is visible in viewport
-  // To prevent 422:Too Many Request Error from Server
+  // To prevent 429:Too Many Request Error from Server
   useEffect(() => {
     if (viewCount === 1) {
       getCommentsCount();

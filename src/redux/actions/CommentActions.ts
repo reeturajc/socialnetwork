@@ -1,3 +1,8 @@
+/*
+  Author Name  : Reeturaj Chatterjee
+  Author Email : chatterjeereeturaj@gmail.com
+*/
+
 import { Comment } from "../../models/Comment";
 
 export enum CommentActionTypes {

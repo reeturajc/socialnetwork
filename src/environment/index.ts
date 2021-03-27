@@ -1,3 +1,8 @@
+/*
+  Author Name  : Reeturaj Chatterjee
+  Author Email : chatterjeereeturaj@gmail.com
+*/
+
 import { DevEnvironment } from "./dev.env";
 // import { ProdEnvironment } from "./prod.env";
 

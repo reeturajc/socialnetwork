@@ -1,3 +1,8 @@
+/*
+  Author Name  : Reeturaj Chatterjee
+  Author Email : chatterjeereeturaj@gmail.com
+*/
+
 import moment from "moment";
 import React, { Component } from "react";
 import { connect } from "react-redux";

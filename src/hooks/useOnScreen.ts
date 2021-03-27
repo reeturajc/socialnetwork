@@ -1,3 +1,8 @@
+/*
+  Author Name  : Reeturaj Chatterjee
+  Author Email : chatterjeereeturaj@gmail.com
+*/
+
 import { useEffect, useState } from "react";
 
 export default function useOnScreen(ref:any) {

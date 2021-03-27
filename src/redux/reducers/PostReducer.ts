@@ -1,3 +1,8 @@
+/*
+  Author Name  : Reeturaj Chatterjee
+  Author Email : chatterjeereeturaj@gmail.com
+*/
+
 import { Post } from "../../models/Post";
 import { PostActionTypes } from "../actions/PostActions";
 
