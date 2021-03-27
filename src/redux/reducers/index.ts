@@ -1,8 +1,9 @@
 import {applyMiddleware,combineReducers, createStore, compose} from 'redux';
 import thunk from 'redux-thunk';
+import { PostReducer } from './PostReducer';
 
 export const rootReducer = combineReducers({
-
+    postReducer: PostReducer
 });
 
 const composeEnhancers = compose;

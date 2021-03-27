@@ -2,6 +2,7 @@ import { DevEnvironment } from "./dev.env";
 // import { ProdEnvironment } from "./prod.env";
 
 export interface Environment {
+    appName : string;
     baseUrl : string;
 }
 

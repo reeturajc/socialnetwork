@@ -6,7 +6,7 @@ export class Http {
         headers: {
             'Content-Type': 'application/json',
         },
-        withCredentials: true
+        withCredentials: false
     });
     static async get(url:string, config?: AxiosRequestConfig) {
         try {
@@ -22,6 +22,28 @@ export class Http {
     static async post(url:string, body?: object, config?: AxiosRequestConfig) {
         try {
             const response = await Http.axios.post(url, body, config);
+            if (response) {
+                return response.data;
+            }
+        } catch (e) {
+            Http.handleErrors(e);
+            return Promise.reject(e);
+        }
+    }
+    static async put(url:string, body?: object, config?: AxiosRequestConfig) {
+        try {
+            const response = await Http.axios.put(url, body, config);
+            if (response) {
+                return response.data;
+            }
+        } catch (e) {
+            Http.handleErrors(e);
+            return Promise.reject(e);
+        }
+    }
+    static async delete(url:string, config?: AxiosRequestConfig) {
+        try {
+            const response = await Http.axios.delete(url, config);
             if (response) {
                 return response.data;
             }

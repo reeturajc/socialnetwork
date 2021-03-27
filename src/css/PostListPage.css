@@ -1,0 +1,9 @@
+.preloader{
+    position: absolute;
+    top: 45%;
+    left: 45%;
+}
+
+.link{
+    cursor: pointer;
+}
