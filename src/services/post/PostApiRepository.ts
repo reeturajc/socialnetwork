@@ -39,7 +39,6 @@ export class PostApiRepository {
       try {
         const response = await PostApi.createPost(postData);
         dispatch(PostActions.AddPostAction(response));
-        console.log(response);
         return Promise.resolve();
       } catch (error) {
         return Promise.reject(error);
@@ -51,7 +50,6 @@ export class PostApiRepository {
       try {
         const response = await PostApi.updatePost(postData);
         dispatch(PostActions.UpdatePostAction(response));
-        console.log(response);
         return Promise.resolve();
       } catch (error) {
         return Promise.reject(error);
@@ -63,7 +61,6 @@ export class PostApiRepository {
       try {
         const response = await PostApi.deletePost(postData);
         dispatch(PostActions.DeletePostAction(response.id));
-        console.log(response);
         return Promise.resolve();
       } catch (error) {
         return Promise.reject(error);

@@ -92,7 +92,6 @@ class PostDetailsPage extends Component<Props, State> {
   };
 
   postFormSubmitHandler = async (post: Post) => {
-    console.log("POST FORM LOG", post);
     this.setState({
       postFormFlag: 0,
     });

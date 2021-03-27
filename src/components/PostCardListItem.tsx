@@ -33,7 +33,7 @@ function PostCardListItem({
   onDelete,
   onDetails,
   onFetchCommentsCount,
-  detailView
+  detailView,
 }: Props) {
   const ref: any = useRef();
   // Used custom hook to get visiblility information
@@ -41,6 +41,7 @@ function PostCardListItem({
 
   const [commentsCount, setCommentsCount] = useState(0);
   const [viewCount, setViewCount] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   // Get comments count for the the given post
   async function getCommentsCount() {
@@ -51,10 +52,10 @@ function PostCardListItem({
   // Fetch comments count only if the component is rendered for detailView
   // To prevent 429:Too Many Request Error from Server
   useEffect(() => {
-    if(detailView){
+    if (detailView) {
       getCommentsCount();
-    }  
-  }, [post])
+    }
+  }, [post]);
 
   // Get log of count whenever the component is visible in viewport
   useEffect(() => {
@@ -83,10 +84,23 @@ function PostCardListItem({
             alt={post.title}
             className="p-3"
             onClick={onDetails}
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer", display: loading ? "none" : "block" }}
+            onLoad={() => setLoading(false)}
           />
         )}
-
+        {isVisible && (
+          <CardImg
+            top
+            width="100%"
+            src={
+              "https://i0.wp.com/codemyui.com/wp-content/uploads/2017/03/loading-animation.gif?fit=880%2C440&ssl=1"
+            }
+            alt={post.title}
+            className="p-3"
+            onClick={onDetails}
+            style={{ cursor: "pointer", display: loading ? "block" : "none" }}
+          />
+        )}
         <CardBody>
           <CardTitle tag="h5" onClick={onDetails} style={{ cursor: "pointer" }}>
             {post.title}

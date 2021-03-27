@@ -49,7 +49,6 @@ export class CommentApiRepository {
       try {
         const response = await CommentApi.createComment(postId,commentBody);
         dispatch(CommentActions.AddCommentAction(response));
-        console.log(response);
         return Promise.resolve();
       } catch (error) {
         return Promise.reject(error);
@@ -61,7 +60,6 @@ export class CommentApiRepository {
       try {
         const response = await CommentApi.deleteComment(postId,commentData);
         dispatch(CommentActions.DeleteCommentAction(response.id));
-        console.log(response);
         return Promise.resolve();
       } catch (error) {
         return Promise.reject(error);
