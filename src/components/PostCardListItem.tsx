@@ -11,7 +11,7 @@ import moment from "moment";
 import { Post } from "../models/Post";
 import { connect } from "react-redux";
 import { CommentApiRepository } from "../services/comment/CommentApiRepository";
-import useOnScreen from "../js/useOnScreen";
+import useOnScreen from "../hooks/useOnScreen";
 
 interface Props {
   post: Post;
@@ -31,28 +31,35 @@ function PostCardListItem({
   detailView
 }: Props) {
   const ref: any = useRef();
+  // Used custom hook to get visiblility information
   const isVisible = useOnScreen(ref);
 
   const [commentsCount, setCommentsCount] = useState(0);
   const [viewCount, setViewCount] = useState(0);
 
+  // Get comments count for the the given post
   async function getCommentsCount() {
     const count = await onFetchCommentsCount(post.id);
     setCommentsCount(count);
   }
 
+  // Fetch comments count only if the component is rendered for detailView
+  // To prevent 422:Too Many Request Error from Server
   useEffect(() => {
     if(detailView){
       getCommentsCount();
     }  
   }, [post])
 
+  // Get log of count whenever the component is visible in viewport
   useEffect(() => {
     if (isVisible) {
       setViewCount(viewCount + 1);
     }
   }, [isVisible]);
 
+  // Call comments API only for the first time when component is visible in viewport
+  // To prevent 422:Too Many Request Error from Server
   useEffect(() => {
     if (viewCount === 1) {
       getCommentsCount();
@@ -62,6 +69,7 @@ function PostCardListItem({
   return (
     <div ref={ref}>
       <Card className="shadow mt-5" style={{ borderRadius: "10px" }}>
+        {/* Load Image only when the component is visible */}
         {isVisible && (
           <CardImg
             top

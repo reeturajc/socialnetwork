@@ -45,6 +45,7 @@ class PostListPage extends Component<Props, State> {
     await this.props.onFetch();
   };
 
+  // Set currently selected post into state and scroll page to top
   postEditHandler = (post: Post) => {
     if (post) {
       this.setState({
@@ -55,15 +56,18 @@ class PostListPage extends Component<Props, State> {
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
 
+  // Set currently selected post into state and open post delete confirm box
   postDeleteConfirm = (post: Post) => {
     this.setState({ selectedPost: post, deleteConfirm: true });
   };
 
+  // Delete Post anc close confirm box
   postDeleteHandler = async () => {
     await this.props.onDelete(this.state.selectedPost);
     this.setState({ deleteConfirm: false });
   };
 
+  // Get form data and Add/Update post data base on post id value
   postFormSubmitHandler = async (post: Post) => {
     this.setState({
       selectedPost: null,
@@ -78,6 +82,7 @@ class PostListPage extends Component<Props, State> {
     }
   };
 
+  // Cancel/Close Post Add/Update form
   postFormCancelHandler = () => {
     this.setState({
       selectedPost: null,
@@ -85,6 +90,7 @@ class PostListPage extends Component<Props, State> {
     });
   };
 
+  // Open Post Add/Update form
   postAddHandler = () => {
     this.setState({
       selectedPost: null,
@@ -93,6 +99,7 @@ class PostListPage extends Component<Props, State> {
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
 
+  // Navigate to post details page
   gotoPostDetails = (postId:string) => {
     this.props.history.push(`/post-details/${postId}`);
   }

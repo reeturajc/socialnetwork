@@ -11,6 +11,7 @@ interface Props {
 
 function PostCardList({ posts, onEdit, onDelete, onDetails }: Props) {
   const [sortedPosts, setSortedPosts]: any = useState([]);
+  // Sort the posts from latest to old
   useEffect(() => {
     posts.sort((a, b) => {
       const first: any = a.createdAt;
@@ -30,7 +31,7 @@ function PostCardList({ posts, onEdit, onDelete, onDetails }: Props) {
           <PostCardListItem
             detailView={false}
             post={post}
-            key={key}
+            key={post.id}
             onEdit={() => onEdit(post)}
             onDelete={() => onDelete(post)}
             onDetails={() => onDetails(post.id)}

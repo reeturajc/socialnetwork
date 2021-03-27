@@ -11,14 +11,17 @@ function CustomNavbar(props: any) {
 
   const [activeLink, setActiveLink] = useState("");
 
+  // Update activeLink value whenever the path changes
   useEffect(() => {
     setActiveLink(location.pathname);
   }, [location.pathname]);
 
+  // Function to go back to previous page
   function goBack() {
     history.goBack();
   }
 
+  // Call onClick of a hidden button in PostListPage
   function triggerCreatePost() {
     document.getElementById("addPostBtn")?.click();
   }

@@ -12,11 +12,11 @@ import { Post } from "../models/Post";
 
 interface Props {
   post?: Post | null;
-  onSubmit:any;
-  onCancel:any;
+  onSubmit: any;
+  onCancel: any;
 }
 
-function PostFormCard({ post,onSubmit,onCancel }: Props) {
+function PostFormCard({ post, onSubmit, onCancel }: Props) {
   const [id, setId] = useState("");
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
@@ -33,9 +33,14 @@ function PostFormCard({ post,onSubmit,onCancel }: Props) {
     }
   }, [post]);
 
+  // Validate and Submit Post Add/Update Form
   function submit() {
-    const postData = { id, image, title, description, userId: "1" };
-    onSubmit(postData);
+    if (image === "" || title === "" || description === "") {
+      alert("Please fill all required fields before submitting the form!");
+    } else {
+      const postData = { id, image, title, description, userId: "1" };
+      onSubmit(postData);
+    }
   }
 
   function cancel() {
@@ -52,7 +57,9 @@ function PostFormCard({ post,onSubmit,onCancel }: Props) {
       <CardBody>
         <Form>
           <FormGroup>
-            <Label for="image">Image URL</Label>
+            <Label for="image">
+              Image URL<span style={{ color: "red" }}> *</span>
+            </Label>
             <Input
               type="text"
               name="image"
@@ -63,7 +70,9 @@ function PostFormCard({ post,onSubmit,onCancel }: Props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="title">Title</Label>
+            <Label for="title">
+              Title<span style={{ color: "red" }}> *</span>
+            </Label>
             <Input
               type="text"
               name="title"
@@ -74,7 +83,9 @@ function PostFormCard({ post,onSubmit,onCancel }: Props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="image">Description</Label>
+            <Label for="image">
+              Description<span style={{ color: "red" }}> *</span>
+            </Label>
             <Input
               type="textarea"
               name="description"
@@ -89,21 +100,20 @@ function PostFormCard({ post,onSubmit,onCancel }: Props) {
       </CardBody>
       {userId === "1" || userId === "" ? (
         <CardFooter>
-        <span className="float-right h6 link" onClick={cancel}>
-          Cancel
-        </span>
-        {id ? (
-          <span className="float-right mr-3 h6 link" onClick={submit}>
-            Update
+          <span className="float-right h6 link" onClick={cancel}>
+            Cancel
           </span>
-        ) : (
-          <span className="float-right mr-3 h6 link" onClick={submit}>
-            Post
-          </span>
-        )}
-      </CardFooter>
-      ): null}
-      
+          {id ? (
+            <span className="float-right mr-3 h6 link" onClick={submit}>
+              Update
+            </span>
+          ) : (
+            <span className="float-right mr-3 h6 link" onClick={submit}>
+              Post
+            </span>
+          )}
+        </CardFooter>
+      ) : null}
     </Card>
   );
 }
